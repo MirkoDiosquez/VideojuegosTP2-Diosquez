@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://bnujildrdsr2b"]
+
+[ext_resource type="Texture2D" uid="uid://cvvo0m8k3jt1s" path="res://Assets/Tiny Swords (Free Pack)/Units/Yellow Units/Lancer/Lancer_Idle.png" id="1_dnhgi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwrvh"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(0, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6jmq"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(320, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ovvfi"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(640, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8768"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(960, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v7y0v"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(1280, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qq0wy"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(1600, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nfbbn"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(1920, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1wjq5"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(2240, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpo8x"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(2560, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nkjs8"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(2880, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vx4op"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(3200, 0, 320, 320)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcv3p"]
+atlas = ExtResource("1_dnhgi")
+region = Rect2(3520, 0, 320, 320)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tu8i2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwrvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6jmq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ovvfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8768")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v7y0v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qq0wy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nfbbn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1wjq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpo8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nkjs8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vx4op")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcv3p")
+}],
+"loop": true,
+"name": &"enemyIdle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"new_animation_1",
+"speed": 5.0
+}]
+
+[node name="enemigoLvl1" type="CharacterBody2D" unique_id=141286209]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=190727425]
+sprite_frames = SubResource("SpriteFrames_tu8i2")
+animation = &"enemyIdle"
+frame_progress = 0.75632674
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1303486032]
