@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://trq0t40maqh1"
-path="res://.godot/imported/GoblinWorker.png-b9dffdf9c9899a266bd2311820362856.ctex"
+uid="uid://c7jwgbvgi7i4n"
+path="res://.godot/imported/Stunned.png-4e2038776f6cfa7d26fff203815ae8e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/MINISAGA_GoblinPackA/Json/GoblinWorker/GoblinWorker.png"
-dest_files=["res://.godot/imported/GoblinWorker.png-b9dffdf9c9899a266bd2311820362856.ctex"]
+source_file="res://Assets/Golem v5/V5/Stunned.png"
+dest_files=["res://.godot/imported/Stunned.png-4e2038776f6cfa7d26fff203815ae8e5.ctex"]
 
 [params]
 

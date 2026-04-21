@@ -1,9 +1,13 @@
 [gd_scene format=3 uid="uid://y1ltcd0mc7wk"]
 
-[ext_resource type="Script" uid="uid://vaukulkyu1qk" path="res://player.gd" id="1_hqtel"]
+[ext_resource type="Script" uid="uid://c6emtbrwhx2ir" path="res://player.gd" id="1_hqtel"]
 [ext_resource type="Texture2D" uid="uid://cy7x24l1ov732" path="res://Assets/Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Attack2.png" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://c4mocxlhwdhgs" path="res://Assets/Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Idle.png" id="2_hqtel"]
 [ext_resource type="Texture2D" uid="uid://c15qvhiyeim5q" path="res://Assets/Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Run.png" id="3_sweqy"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jm5j8"]
+radius = 20.0
+height = 58.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
 atlas = ExtResource("1_i3pqv")
@@ -94,7 +98,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Ataque",
-"speed": 8.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -149,20 +153,42 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jm5j8"]
-radius = 22.0
-height = 54.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
+radius = 18.027756
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sweqy"]
+radius = 18.0
+height = 78.0
 
 [node name="Player" type="CharacterBody2D" unique_id=265720657]
 script = ExtResource("1_hqtel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1187239854]
+shape = SubResource("CapsuleShape2D_jm5j8")
+metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1402629293]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_dx0e4")
 animation = &"Idle"
-frame_progress = 0.3553136
+metadata/_edit_lock_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1187239854]
-position = Vector2(0, 18)
-rotation = 1.5707964
-shape = SubResource("CapsuleShape2D_jm5j8")
+[node name="DamageZone" type="Area2D" parent="." unique_id=608563989]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone" unique_id=640608244]
+shape = SubResource("CircleShape2D_hqtel")
+debug_color = Color(0.79882944, 0.0013212854, 0.9092923, 0.41960785)
+
+[node name="AttackZone" type="Area2D" parent="." unique_id=47018021]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1455315824]
+position = Vector2(54, 4)
+shape = SubResource("CapsuleShape2D_sweqy")
+debug_color = Color(0.9647059, 0, 0.11372549, 0.41960785)
+
+[node name="Cooldown" type="Timer" parent="." unique_id=503488783]
+wait_time = 0.8
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

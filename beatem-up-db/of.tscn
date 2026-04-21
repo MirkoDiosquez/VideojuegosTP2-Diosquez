@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://bsm7u2gidqno8"]
+
+[ext_resource type="PackedScene" uid="uid://jdgwpmixw5uq" path="res://background.tscn" id="1_ae4qc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sl8td"]
+size = Vector2(72, 662)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ca03k"]
+size = Vector2(2907, 71)
+
+[node name="TileMapLayer" unique_id=453359241 instance=ExtResource("1_ae4qc")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0" unique_id=1316367384]
+position = Vector2(-37, 321)
+shape = SubResource("RectangleShape2D_sl8td")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="1" unique_id=1618957469]
+position = Vector2(2910, 316)
+shape = SubResource("RectangleShape2D_sl8td")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="2" unique_id=278406584]
+position = Vector2(1454.5, -30.5)
+shape = SubResource("RectangleShape2D_ca03k")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="." index="3" unique_id=1884682712]
+position = Vector2(1453, 676)
+shape = SubResource("RectangleShape2D_ca03k")
