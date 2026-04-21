@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://y1ltcd0mc7wk"]
 
+[ext_resource type="Script" uid="uid://vaukulkyu1qk" path="res://player.gd" id="1_hqtel"]
 [ext_resource type="Texture2D" uid="uid://cy7x24l1ov732" path="res://Assets/Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Attack2.png" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://c4mocxlhwdhgs" path="res://Assets/Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Idle.png" id="2_hqtel"]
 [ext_resource type="Texture2D" uid="uid://c15qvhiyeim5q" path="res://Assets/Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Run.png" id="3_sweqy"]
@@ -149,18 +150,19 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jm5j8"]
-radius = 15.0
-height = 38.0
+radius = 22.0
+height = 54.0
 
 [node name="Player" type="CharacterBody2D" unique_id=265720657]
+script = ExtResource("1_hqtel")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1402629293]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_dx0e4")
 animation = &"Idle"
-frame_progress = 0.3578572
+frame_progress = 0.3553136
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1187239854]
-position = Vector2(0, 26)
+position = Vector2(0, 18)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_jm5j8")

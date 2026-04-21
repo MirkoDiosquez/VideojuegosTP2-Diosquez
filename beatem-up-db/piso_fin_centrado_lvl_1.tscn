@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://d1ceev764k2mt"]
-
-[ext_resource type="Texture2D" uid="uid://cbmkb6vagibhx" path="res://Assets/Tiny Swords (Free Pack)/Terrain/Tileset/Tilemap_color3.png" id="1_kvntb"]
-
-[node name="pisoFinCentradoLvl1" type="Sprite2D" unique_id=421231011]
-texture = ExtResource("1_kvntb")
-region_enabled = true
-region_rect = Rect2(346.68558, 205.59344, 145.63431, 62.092133)
