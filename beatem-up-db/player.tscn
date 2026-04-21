@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c6emtbrwhx2ir" path="res://player.gd" id="1_hqtel"]
 [ext_resource type="Texture2D" uid="uid://cy7x24l1ov732" path="res://Assets/Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Attack2.png" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://c4mocxlhwdhgs" path="res://Assets/Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Idle.png" id="2_hqtel"]
+[ext_resource type="Texture2D" uid="uid://cdampbyyhe1eo" path="res://Assets/Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Guard.png" id="3_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://c15qvhiyeim5q" path="res://Assets/Tiny Swords (Free Pack)/Units/Black Units/Warrior/Warrior_Run.png" id="3_sweqy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jm5j8"]
@@ -24,6 +25,30 @@ region = Rect2(384, 0, 192, 192)
 [sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
 atlas = ExtResource("1_i3pqv")
 region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dx0e4"]
+atlas = ExtResource("3_2hs0m")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm5j8"]
+atlas = ExtResource("3_2hs0m")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7hik5"]
+atlas = ExtResource("3_2hs0m")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtqh7"]
+atlas = ExtResource("3_2hs0m")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2wuci"]
+atlas = ExtResource("3_2hs0m")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iruf7"]
+atlas = ExtResource("3_2hs0m")
+region = Rect2(960, 0, 192, 192)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
 atlas = ExtResource("2_hqtel")
@@ -96,9 +121,32 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b26j0")
 }],
-"loop": true,
+"loop": false,
 "name": &"Ataque",
-"speed": 10.0
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dx0e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm5j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7hik5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtqh7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2wuci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iruf7")
+}],
+"loop": true,
+"name": &"Guard",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -158,9 +206,34 @@ radius = 18.027756
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sweqy"]
 radius = 18.0
-height = 78.0
+height = 86.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j5n4i"]
+bg_color = Color(0, 0.5019608, 0.6627451, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sweqy"]
+bg_color = Color(0.85742587, 0.041365027, 4.813075e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2hs0m"]
 
 [node name="Player" type="CharacterBody2D" unique_id=265720657]
+motion_mode = 1
 script = ExtResource("1_hqtel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1187239854]
@@ -170,25 +243,63 @@ metadata/_edit_lock_ = true
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1402629293]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_dx0e4")
-animation = &"Idle"
+animation = &"Guard"
+frame = 3
+frame_progress = 0.59128886
 metadata/_edit_lock_ = true
 
 [node name="DamageZone" type="Area2D" parent="." unique_id=608563989]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone" unique_id=640608244]
+visible = false
 shape = SubResource("CircleShape2D_hqtel")
 debug_color = Color(0.79882944, 0.0013212854, 0.9092923, 0.41960785)
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=47018021]
+visible = false
+position = Vector2(51, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1455315824]
-position = Vector2(54, 4)
 shape = SubResource("CapsuleShape2D_sweqy")
 debug_color = Color(0.9647059, 0, 0.11372549, 0.41960785)
 
 [node name="Cooldown" type="Timer" parent="." unique_id=503488783]
-wait_time = 0.8
+wait_time = 0.001
 one_shot = true
 autostart = true
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=134106952]
+limit_left = 5
+limit_top = 10
+limit_bottom = 762
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 10.0
+
+[node name="GuardBar" type="ProgressBar" parent="." unique_id=1881087043]
+offset_left = -47.0
+offset_top = -82.0
+offset_right = 48.0
+offset_bottom = -70.0
+theme_override_font_sizes/font_size = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_j5n4i")
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=325529244]
+offset_left = -47.0
+offset_top = -67.0
+offset_right = 48.0
+offset_bottom = -55.0
+theme_override_font_sizes/font_size = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_sweqy")
+show_percentage = false
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=98653930]
+offset_left = -24.0
+offset_top = -33.0
+offset_right = 23.0
+offset_bottom = -6.0
+theme_override_font_sizes/font_size = 1
+theme_override_styles/background = SubResource("StyleBoxTexture_2hs0m")
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]

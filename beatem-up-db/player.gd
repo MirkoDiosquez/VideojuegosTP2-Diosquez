@@ -1,10 +1,10 @@
 extends CharacterBody2D
-
 @onready var anim = $AnimatedSprite2D
-@onready var cooldown_timer = $CooldownTimer
-
+@onready var Cooldown = $Cooldown
+@onready var attack_zone = $AttackZone
 var is_attacking = false
 var can_attack = true
+var aim = Vector2.RIGHT
 const SPEED = 300.0
 
 func _ready() -> void:
@@ -18,9 +18,15 @@ func _physics_process(delta: float) -> void:
 
 	velocity = direction * SPEED
 	move_and_slide()
-
-	if direction.x != 0:
+	position.x = clamp(position.x, 15, 10000000)
+	position.y = clamp(position.y, 110, 670)
+	
+	
+	if not is_attacking and direction.x != 0:
+		aim = Vector2.RIGHT * sign(direction.x)
 		anim.flip_h = direction.x < 0
+
+	attack_zone.position.x = abs(attack_zone.position.x) * aim.x
 
 	if Input.is_action_just_pressed("attack") and can_attack and not is_attacking:
 		_start_attack()
@@ -40,11 +46,10 @@ func _start_attack() -> void:
 func _on_animation_finished() -> void:
 	if anim.animation == "Ataque":
 		is_attacking = false
-		cooldown_timer.start()
-
-func _on_cooldown_timer_timeout() -> void:
-	can_attack = true
-
+		Cooldown.start()
 
 func _on_cooldown_timeout() -> void:
-	pass # Replace with function body.
+	can_attack = true
+	
+	attack_zone.position.x = abs(attack_zone.position.x) * aim.x
+	print("aim: ", aim, " | attack_zone.x: ", attack_zone.position.x)

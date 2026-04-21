@@ -609,15 +609,18 @@ height = 72.0
 [node name="boss" type="CharacterBody2D" unique_id=719855490]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1477948202]
+visible = false
 position = Vector2(0, 11)
 shape = SubResource("CapsuleShape2D_o1i15")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=820736886]
 sprite_frames = SubResource("SpriteFrames_03wqa")
 animation = &"boss_attack1"
-frame_progress = 0.19375859
+frame = 8
+frame_progress = 0.025110014
 
 [node name="DamageZone" type="Area2D" parent="." unique_id=877895226]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone" unique_id=1857985057]
 position = Vector2(0, 13)
@@ -625,6 +628,7 @@ shape = SubResource("CapsuleShape2D_we8h1")
 debug_color = Color(0.7994889, 0.0005032551, 0.8002039, 0.41960785)
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=1749137718]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1777210820]
 position = Vector2(49, 8)
