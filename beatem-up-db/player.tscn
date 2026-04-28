@@ -8,7 +8,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jm5j8"]
 radius = 20.0
-height = 58.0
+height = 82.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
 atlas = ExtResource("1_i3pqv")
@@ -146,7 +146,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Guard",
-"speed": 5.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -202,7 +202,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
-radius = 18.027756
+radius = 21.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sweqy"]
 radius = 18.0
@@ -230,35 +230,33 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2hs0m"]
-
 [node name="Player" type="CharacterBody2D" unique_id=265720657]
+collision_mask = 0
 motion_mode = 1
 script = ExtResource("1_hqtel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1187239854]
+position = Vector2(0, -5)
 shape = SubResource("CapsuleShape2D_jm5j8")
-metadata/_edit_lock_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1402629293]
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_dx0e4")
 animation = &"Guard"
-frame = 3
-frame_progress = 0.59128886
+frame_progress = 0.060417067
 metadata/_edit_lock_ = true
 
 [node name="DamageZone" type="Area2D" parent="." unique_id=608563989]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageZone" unique_id=640608244]
-visible = false
 shape = SubResource("CircleShape2D_hqtel")
 debug_color = Color(0.79882944, 0.0013212854, 0.9092923, 0.41960785)
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=47018021]
-visible = false
 position = Vector2(51, 0)
+disable_mode = 1
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1455315824]
 shape = SubResource("CapsuleShape2D_sweqy")
@@ -277,13 +275,14 @@ limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 
-[node name="GuardBar" type="ProgressBar" parent="." unique_id=1881087043]
+[node name="ShieldBar" type="ProgressBar" parent="." unique_id=1881087043]
 offset_left = -47.0
 offset_top = -82.0
 offset_right = 48.0
 offset_bottom = -70.0
 theme_override_font_sizes/font_size = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_j5n4i")
+show_percentage = false
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=325529244]
 offset_left = -47.0
@@ -294,12 +293,7 @@ theme_override_font_sizes/font_size = 1
 theme_override_styles/background = SubResource("StyleBoxFlat_sweqy")
 show_percentage = false
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=98653930]
-offset_left = -24.0
-offset_top = -33.0
-offset_right = 23.0
-offset_bottom = -6.0
-theme_override_font_sizes/font_size = 1
-theme_override_styles/background = SubResource("StyleBoxTexture_2hs0m")
+[node name="ShieldRegenTime" type="Timer" parent="." unique_id=1574316232]
 
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
+[connection signal="timeout" from="ShieldRegenTime" to="." method="_on_shield_regen_time_timeout"]

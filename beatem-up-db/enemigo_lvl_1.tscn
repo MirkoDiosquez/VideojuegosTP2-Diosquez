@@ -1,8 +1,10 @@
 [gd_scene format=3 uid="uid://bnujildrdsr2b"]
 
 [ext_resource type="Texture2D" uid="uid://c3w486mfd8jqr" path="res://Assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Attack.png" id="1_ovvfi"]
+[ext_resource type="Script" uid="uid://d3wbx0kurhlot" path="res://enemigo_lvl_1.gd" id="1_v7y0v"]
 [ext_resource type="Texture2D" uid="uid://kmdebjjrfow6" path="res://Assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Hit.png" id="2_o8768"]
 [ext_resource type="Texture2D" uid="uid://b7wkevl136g4x" path="res://Assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Idle.png" id="2_ovvfi"]
+[ext_resource type="Texture2D" uid="uid://bsysrqt703eeg" path="res://Assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Die.png" id="3_qq0wy"]
 [ext_resource type="Texture2D" uid="uid://dt0ngo8e8ebp5" path="res://Assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Run.png" id="4_v7y0v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qq0wy"]
@@ -48,6 +50,66 @@ region = Rect2(640, 0, 80, 64)
 [sub_resource type="AtlasTexture" id="AtlasTexture_kgwtg"]
 atlas = ExtResource("1_ovvfi")
 region = Rect2(720, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn5u5"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(0, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcosi"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(80, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5qmck"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(160, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6oqr"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(240, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_23ovm"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(320, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aownm"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(400, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipjkj"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(480, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g3p4e"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(560, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hey7s"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(640, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_54om1"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(720, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lae6e"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(800, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvj8e"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(880, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hxbg"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(960, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anhx6"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(1040, 0, 80, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0hy5c"]
+atlas = ExtResource("3_qq0wy")
+region = Rect2(1120, 0, 80, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y0xqc"]
 atlas = ExtResource("2_o8768")
@@ -162,8 +224,58 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_kgwtg")
 }],
-"loop": true,
-"name": &"enemy_atack",
+"loop": false,
+"name": &"enemy_attack",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn5u5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcosi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5qmck")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6oqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_23ovm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aownm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipjkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g3p4e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hey7s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_54om1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lae6e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yvj8e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hxbg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_anhx6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0hy5c")
+}],
+"loop": false,
+"name": &"enemy_dead",
 "speed": 10.0
 }, {
 "frames": [{
@@ -182,7 +294,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fl57n")
 }],
-"loop": true,
+"loop": false,
 "name": &"enemy_hited",
 "speed": 10.0
 }, {
@@ -250,18 +362,25 @@ height = 64.0
 radius = 19.0
 height = 50.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_ovvfi"]
+radius = 136.0588
+
 [node name="enemigoLvl1" type="CharacterBody2D" unique_id=141286209]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_v7y0v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1303486032]
-position = Vector2(-0.5, 43)
+position = Vector2(0, 43)
 shape = SubResource("CapsuleShape2D_qq0wy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=190727425]
 texture_filter = 1
 scale = Vector2(2.5, 2.55)
 sprite_frames = SubResource("SpriteFrames_tu8i2")
-animation = &"enemy_atack"
-frame_progress = 0.6582459
+animation = &"enemy_attack"
+frame = 9
+frame_progress = 1.0
 
 [node name="DamageZone" type="Area2D" parent="." unique_id=169573935]
 
@@ -271,8 +390,21 @@ shape = SubResource("CapsuleShape2D_qn5u5")
 debug_color = Color(0.7994889, 0.0005032551, 0.8002039, 0.41960785)
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=567552894]
+position = Vector2(69, 56)
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1742868257]
-position = Vector2(-69, 56)
 shape = SubResource("CapsuleShape2D_fcosi")
 debug_color = Color(0.99215686, 0, 0, 0.41960785)
+
+[node name="DetectionArea" type="Area2D" parent="." unique_id=511399572]
+position = Vector2(0, 47)
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea" unique_id=998769969]
+shape = SubResource("CircleShape2D_ovvfi")
+debug_color = Color(0.9081127, 0.98069185, 0.99999994, 0.41960785)
+
+[node name="Cooldown" type="Timer" parent="." unique_id=630488593]
+wait_time = 10.0
+one_shot = true
