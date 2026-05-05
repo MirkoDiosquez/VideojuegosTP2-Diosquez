@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bydvjutgqnwl3"]
+
+[ext_resource type="Texture2D" uid="uid://cu5ly4et25lxh" path="res://Assets/heart_normal_full.png" id="1_sl8fc"]
+[ext_resource type="Script" uid="uid://cst8c8lsf7f2r" path="res://Scripts/heath.gd" id="1_tgdjk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tgdjk"]
+size = Vector2(8, 8)
+
+[node name="Heath" type="Area2D" unique_id=260296986]
+scale = Vector2(4.5, 4.5)
+script = ExtResource("1_tgdjk")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=208473102]
+texture_filter = 1
+texture = ExtResource("1_sl8fc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2006723706]
+shape = SubResource("RectangleShape2D_tgdjk")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://sof3rytjho0g"]
+
+[ext_resource type="Texture2D" uid="uid://bpxoi6ue0wr8t" path="res://Assets/final.png" id="1_8c8wo"]
+[ext_resource type="Script" uid="uid://df55s3g54p0v" path="res://Scripts/nivel_3.gd" id="1_d04pd"]
+[ext_resource type="PackedScene" uid="uid://y1ltcd0mc7wk" path="res://Escenas/player.tscn" id="3_yfp37"]
+
+[node name="nivel3" type="Node2D" unique_id=1847083891]
+script = ExtResource("1_d04pd")
+metadata/_edit_vertical_guides_ = [-446.0]
+
+[node name="Final" type="Sprite2D" parent="." unique_id=2098087218]
+position = Vector2(678.99994, 387.49997)
+scale = Vector2(0.8828125, 0.8154296)
+texture = ExtResource("1_8c8wo")
+
+[node name="Player" parent="." unique_id=265720657 instance=ExtResource("3_yfp37")]
+position = Vector2(220, 358)

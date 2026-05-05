@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://3v7m7y3erlaa"]
+[gd_scene format=3 uid="uid://bnujildrdsr2b"]
 
 [ext_resource type="Texture2D" uid="uid://c3w486mfd8jqr" path="res://Assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Attack.png" id="1_ovvfi"]
+[ext_resource type="Script" uid="uid://d3wbx0kurhlot" path="res://Scripts/enemigo_lvl_1.gd" id="1_v7y0v"]
 [ext_resource type="Texture2D" uid="uid://kmdebjjrfow6" path="res://Assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Hit.png" id="2_o8768"]
 [ext_resource type="Texture2D" uid="uid://b7wkevl136g4x" path="res://Assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Idle.png" id="2_ovvfi"]
 [ext_resource type="Texture2D" uid="uid://bsysrqt703eeg" path="res://Assets/Forest_Monsters_FREE/Mushroom/Mushroom with VFX/Mushroom-Die.png" id="3_qq0wy"]
@@ -358,15 +359,27 @@ radius = 23.0
 height = 64.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fcosi"]
-radius = 26.0
-height = 70.0
+radius = 27.000004
+height = 86.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ovvfi"]
-radius = 136.0588
+radius = 195.20758
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vuiaf"]
+bg_color = Color(0.85742587, 0.041365027, 4.813075e-07, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="enemigoLvl1" type="CharacterBody2D" unique_id=141286209]
 collision_layer = 2
 collision_mask = 0
+script = ExtResource("1_v7y0v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1303486032]
 position = Vector2(0, 43)
@@ -379,6 +392,7 @@ sprite_frames = SubResource("SpriteFrames_tu8i2")
 animation = &"enemy_attack"
 frame = 9
 frame_progress = 1.0
+flip_h = true
 
 [node name="DamageZone" type="Area2D" parent="." unique_id=169573935]
 
@@ -388,10 +402,11 @@ shape = SubResource("CapsuleShape2D_qn5u5")
 debug_color = Color(0.7994889, 0.0005032551, 0.8002039, 0.41960785)
 
 [node name="AttackZone" type="Area2D" parent="." unique_id=567552894]
-position = Vector2(69, 56)
+position = Vector2(74, 56)
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AttackZone" unique_id=1742868257]
+rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_fcosi")
 debug_color = Color(0.99215686, 0, 0, 0.41960785)
 
@@ -404,5 +419,14 @@ shape = SubResource("CircleShape2D_ovvfi")
 debug_color = Color(0.9081127, 0.98069185, 0.99999994, 0.41960785)
 
 [node name="Cooldown" type="Timer" parent="." unique_id=630488593]
-wait_time = 10.0
+wait_time = 1.5
 one_shot = true
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=222903201]
+offset_left = -47.0
+offset_top = -16.0
+offset_right = 48.0
+offset_bottom = -4.0
+theme_override_font_sizes/font_size = 1
+theme_override_styles/background = SubResource("StyleBoxFlat_vuiaf")
+show_percentage = false

@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://dtbbcnqydbx5"]
+
+[ext_resource type="Script" uid="uid://d2oh53n1mfa1i" path="res://Scripts/game_over.gd" id="1_37yi2"]
+[ext_resource type="Texture2D" uid="uid://cyxylduqwjgi0" path="res://Assets/fond.png" id="1_mkivq"]
+[ext_resource type="Texture2D" uid="uid://boigsx8nfo4tt" path="res://Assets/reini.png" id="3_wv832"]
+[ext_resource type="Texture2D" uid="uid://c6y316tchl87a" path="res://Assets/salir.png" id="4_rtfuk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wv832"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rtfuk"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5er1d"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ey5a1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_acdi2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_40kah"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4tnjg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yev8a"]
+
+[node name="GameOver" type="Control" unique_id=1323593700]
+layout_mode = 3
+anchor_right = 0.469
+anchor_bottom = 0.41400003
+offset_left = 25.0
+offset_top = 17.0
+offset_right = -569.7
+offset_bottom = -291.2
+script = ExtResource("1_37yi2")
+
+[node name="fond" type="Sprite2D" parent="." unique_id=1572452141]
+position = Vector2(625.0999, 383.624)
+scale = Vector2(0.9271041, 0.7119001)
+texture = ExtResource("1_mkivq")
+
+[node name="Reiniciar" type="Button" parent="." unique_id=786597755]
+texture_filter = 1
+layout_mode = 0
+offset_left = 136.0
+offset_top = 478.00003
+offset_right = 1684.0
+offset_bottom = 1510.0
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wv832")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rtfuk")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_5er1d")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ey5a1")
+text = "
+"
+icon = ExtResource("3_wv832")
+text_overrun_behavior = 1
+vertical_icon_alignment = 2
+expand_icon = true
+text_direction = 1
+
+[node name="Salir" type="Button" parent="." unique_id=373327628]
+texture_filter = 1
+layout_mode = 0
+offset_left = 657.0
+offset_top = 482.0
+offset_right = 2205.0
+offset_bottom = 1514.0
+scale = Vector2(0.3, 0.3)
+size_flags_horizontal = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_acdi2")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_40kah")
+theme_override_styles/hover_pressed = SubResource("StyleBoxEmpty_4tnjg")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yev8a")
+text = "
+"
+icon = ExtResource("4_rtfuk")
+text_overrun_behavior = 1

@@ -1,14 +1,16 @@
 extends CharacterBody2D
-
-@onready var anim = $AnimatedSprite2D
+signal enemy_died(enemy: CharacterBody2D)
+@onready var anim = $pj
+@onready var animF = $dx
 @onready var sight_area = $DetectionArea
 @onready var attack_area = $AttackZone
 @onready var attack_cooldown = $Cooldown
+@onready var health_bar = $HealthBar
 
-const SPEED = 180.0
-const PATROL_SPEED = 90.0
-const MAX_HEALTH = 25
-const ATTACK_DAMAGE = 10
+const SPEED = 170.0
+const PATROL_SPEED = 70.0
+const MAX_HEALTH = 10
+const ATTACK_DAMAGE = 12
 const ATTACK_DISTANCE = 40 
 
 var current_health = MAX_HEALTH
@@ -26,6 +28,9 @@ var last_direction_x = 1.0
 const PATROL_CHANGE_TIME = 2.0
 
 func _ready() -> void:
+	health_bar.max_value = MAX_HEALTH
+	health_bar.value = current_health
+
 	attack_cooldown.timeout.connect(_on_attack_cooldown_timeout)
 	patrol_direction = [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN].pick_random()
 	
@@ -41,7 +46,7 @@ func _physics_process(delta: float) -> void:
 	if is_dead or is_attacking or is_hit:
 		return
 
-	position.x = clamp(position.x, 15, 10000000)
+	position.x = clamp(position.x, 15, 1100)
 	position.y = clamp(position.y, 110, 670)
 
 	if in_sight and player != null:
@@ -54,6 +59,12 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+func _update_facing(dir_x: float) -> void:
+	if dir_x != 0:
+		last_direction_x = sign(dir_x)
+	anim.flip_h = last_direction_x < 0
+	attack_area.position.x = abs(attack_area.position.x) * last_direction_x
+
 func _follow() -> void:
 	var direction = (player.global_position - global_position).normalized()
 	var dist = global_position.distance_to(player.global_position)
@@ -63,58 +74,55 @@ func _follow() -> void:
 	else:
 		velocity = direction * SPEED
 
-	if direction.x != 0:
-		last_direction_x = sign(direction.x)
-
-	anim.flip_h = last_direction_x < 0
-	attack_area.position.x = abs(attack_area.position.x) * last_direction_x
+	# Siempre mirar hacia el jugador, incluso si está arriba/abajo
+	var diff_x = player.global_position.x - global_position.x
+	_update_facing(diff_x)
 
 	anim.play("enemy_run")
 
 func _patrol(delta: float) -> void:
 	patrol_timer += delta 
-	
 	if patrol_timer >= PATROL_CHANGE_TIME:
 		patrol_timer = 0.0
 		patrol_direction = [Vector2.RIGHT, Vector2.LEFT, Vector2.UP, Vector2.DOWN].pick_random()
-
 	velocity = patrol_direction * PATROL_SPEED
-
-	if patrol_direction.x != 0:
-		last_direction_x = sign(patrol_direction.x)
-
-	anim.flip_h = last_direction_x < 0
-	attack_area.position.x = abs(attack_area.position.x) * last_direction_x
-
+	_update_facing(patrol_direction.x)
 	anim.play("enemy_run")
 
 func _attack() -> void:
 	is_attacking = true
 	can_attack = false
 	velocity = Vector2.ZERO
-	anim.flip_h = last_direction_x < 0
+	if player != null:
+		var diff_x = player.global_position.x - global_position.x
+		_update_facing(diff_x)
+	else:
+		_update_facing(last_direction_x)
 
 	anim.play("enemy_attack")
+	animF.play("attack_fx")
 	attack_cooldown.start()
 
 func take_damage(amount: int) -> void:
 	if is_dead:
 		return
-
+	is_attacking = false
 	current_health -= amount
 	current_health = max(current_health, 0)
-
 	if current_health <= 0:
 		_die()
 	else:
 		is_hit = true
 		velocity = Vector2.ZERO
 		anim.play("enemy_hited")
+	health_bar.value = current_health
 
 func _die() -> void:
 	is_dead = true
 	velocity = Vector2.ZERO
+	enemy_died.emit(self)
 	anim.play("enemy_dead")
+	animF.play("death_fx")
 
 func _on_animation_finished() -> void:
 	if anim.animation == "enemy_attack":
