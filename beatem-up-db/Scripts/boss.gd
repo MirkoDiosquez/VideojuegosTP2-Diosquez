@@ -1,5 +1,7 @@
 extends CharacterBody2D
 
+#CORRECCION No tengo tan claro porqué pero el boss se pega a si mismo
+
 @onready var anim = $AnimatedSprite2D
 @onready var attack_area = $AttackZone
 @onready var sight_area = $DetectionArea

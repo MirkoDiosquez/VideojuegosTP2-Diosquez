@@ -1,5 +1,7 @@
 extends Node2D
 
+#CORRECCION: La clase Level2.gd es igual a esta, entonces por qué tener 2 clases en lugar de 1? Mejor parametrizar
+
 const ENEMY_SCENE = preload("res://Escenas/enemigo_lvl_1.tscn")
 const WAVES = [3, 5, 7]
 const NEXT_SCENE = "res://Escenas/nivel2.tscn"

@@ -102,6 +102,7 @@ func _on_attack_zone_body_exited(body: Node) -> void:
 		enemies_in_range.erase(body)
 
 func _start_attack() -> void:
+	#CORRECCION: Lo mejor es aplicar el daño cuando el golpe cae, para eso se puede usar un nodo timer, como el que se usa para el cooldown, que espere hasta que haya pasado el tiempo justo de la animación hasta el frame donde cae el golpe. En el enemigo hacés una espera.
 	is_attacking = true
 	can_attack = false
 	anim.play("Ataque")

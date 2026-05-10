@@ -49,6 +49,8 @@ func _ready() -> void:
 		push_warning("HordeManager: No hay hordas configuradas!")
 
 func _find_player() -> CharacterBody2D:
+	#CORRECCION: Esto da algo de miedo, recorrer toda la escena es una barbaridad,
+	# vos deberías saber dónde está el player. Además si de pronto ponemos al player dentro de otro nodo esto se rompe
 	for child in get_tree().current_scene.get_children():
 		if child is CharacterBody2D and child.has_method("take_damage") and child.has_method("heal"):
 			return child

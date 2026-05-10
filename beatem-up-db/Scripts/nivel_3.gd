@@ -20,6 +20,7 @@ func _spawn_pickup_gradual() -> void:
 		if get_tree() == null:
 			return
 		_spawn_pickup()
+	#CORRECCION: ⬇ Buena idea para el nivel del boss. También se puede usar un nodo en la escena, para no estar creando uno nuevo cada vez
 	await get_tree().create_timer(PICKUP_SPAWN_TIME).timeout
 	if get_tree() == null:
 		return

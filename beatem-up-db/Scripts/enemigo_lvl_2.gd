@@ -127,6 +127,7 @@ func _die() -> void:
 func _on_animation_finished() -> void:
 	if anim.animation == "enemy_attack":
 		is_attacking = false
+		#CORRECCION: Y si el jugador ya no está más en el area de daño cuando esto pasa?????
 		if player != null:
 			player.take_damage(ATTACK_DAMAGE)
 
@@ -137,6 +138,9 @@ func _on_animation_finished() -> void:
 		queue_free()
 
 func _on_sight_area_body_entered(body: Node) -> void:
+	#CORRECCION: Si le ponés clase_name al personaje te ahorrás una condición
+	# class_name Player (arriba de todo en player.gd)
+	# if body is Player: ...
 	if body is CharacterBody2D and body.has_method("take_damage"):
 		player = body
 		in_sight = true
